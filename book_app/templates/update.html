@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="alert alert-warning" role='alert'>
+        <h2 class="text-center">Update Books</h2>
+    </div>
+    <form action="" method='post'>   
+        {% csrf_token %} 
+        {{form|crispy}}
+        <button class="btn btn-primary">Save</button>
+    </form>
+
+</div>    
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            <div class="alert alert-success" role='laert'>
+                <h2 class="text-center">Register An Account</h2>
+            </div>
+            <form action="" method='POST'>
+                {% csrf_token %}
+                {{form|crispy}}
+                <br>
+                <button class="btn btn-success">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

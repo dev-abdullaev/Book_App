@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-5 ">
+                <img src="{{book.img}}" alt="" width='70%'>
+            </div>
+            <div class="col-sm-7">
+                <h3>{{book.title}} | <small class='text-secondary'>{{book.book_type}}</small></h3> 
+                <p>By <strong>{{book.author}} <i class="text-muted">(Author)</i></strong></p>
+                <a class='text-decoration-none text-dark' style='font-size: 14px;'> 
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Read More
+                    </a>
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                            <a href="{% url 'edit' book.id %}" class='btn btn-primary'> Edit</a>
+                            <a href="{% url 'delete' book.id %}" class='btn btn-danger'> Delete</a>
+                        {% endif %}
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                        <a href="{{book.upload_file.url}}" class='btn btn-danger' download="{{book.upload_file.url}}"> Download</a>   
+                    {% endif %}
+                    <div class="collapse" id="collapseExample">
+                        <p>{{book.description | linebreaks}}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="alert alert-success" role='alert'>
+            <h2 class="text-center">All My Favorite Books</h2>
+        </div>
+        <div class="card d-flex">
+            <div class="card-body">
+                <div class="row">
+                    {% for book in books %}
+                        <div class="col-sm-2">
+                            <div class="text-center" >
+                                <a href="{% url 'detail' book.id %}">
+                                    <img src="{{ book.img }}" alt="" class='rounded' width='100%'>
+                                </a>
+                            </div>
+                            <a style='text-decoration: none;' href="{% url 'detail' book.id %}">
+                                <dt class='text-small' style='font-size: 13px;'>{{book.title}}</dt>
+                            </a>
+                            <strong style='font-size: 13px;' class='text-secondary'>{{book.author}}</strong> <br>
+                            <small style='line-height: 0;' class='text-secondary'>{{book.book_type}}</small>
+                            <br>
+                            <small>{{book.status}}</small>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>     
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="alert alert-danger" role='alert'>
+        <h2 class="text-center">Delete Books</h2>
+    </div>
+    <p>Are you sure you want to delete <strong><i>{{book.title}}</i></strong>?</p>
+    <form action="" method='post'>   
+        {% csrf_token %} 
+        <button class="btn btn-danger">Confirm</button>
+        <a class='btn btn-warning' href="{% url 'index' %}">Cancel</a>
+    </form>
+
+</div>
+{% endblock content %}
